@@ -1,0 +1,13 @@
+{
+    "manifest": {
+        "app": {
+            "name": "HTML Zip"
+        }
+    },
+    "viewer": {
+        "title": "HTML Zip 미리보기",
+        "loading": "HTML 패키지를 여는 중...",
+        "missingPath": "HTML Zip 파일이 제공되지 않았습니다.",
+        "openFailed": "이 HTML Zip 패키지를 열 수 없습니다: {{message}}"
+    }
+}

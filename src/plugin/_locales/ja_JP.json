@@ -1,0 +1,13 @@
+{
+    "manifest": {
+        "app": {
+            "name": "HTML Zip"
+        }
+    },
+    "viewer": {
+        "title": "HTML Zip プレビュー",
+        "loading": "HTML パッケージを開いています...",
+        "missingPath": "HTML Zip ファイルが指定されていません。",
+        "openFailed": "この HTML Zip パッケージを開けません：{{message}}"
+    }
+}

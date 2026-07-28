@@ -1,0 +1,44 @@
+{
+    "name": "eagle-plugin-html-zip",
+    "version": "1.0.0",
+    "description": "Preview the zip format consisting of static HTML items",
+    "author": "pecasha<chihai@pecasha.com>",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/pecasha/eagle-plugin-html-zip.git"
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build:test": "npm run bundle",
+        "build:prod": "npm run bundle -- --prod",
+        "bundle": "rollup -c --bundleConfigAsCjs && gulp build",
+        "test": "npm run build:test && node --test test/*.test.js",
+        "up": "pnpm update -i --latest"
+    },
+    "dependencies": {
+        "yauzl": "^3.2.0"
+    },
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "^29.0.3",
+        "@rollup/plugin-node-resolve": "^16.0.3",
+        "@rollup/plugin-terser": "^1.0.0",
+        "@rollup/plugin-typescript": "^12.3.0",
+        "@types/yauzl": "^3.4.0",
+        "gulp": "^4.0.2",
+        "gulp-clean": "^0.4.0",
+        "gulp-csso": "^4.0.1",
+        "gulp-htmlmin": "^5.0.1",
+        "gulp-inject": "^5.0.5",
+        "gulp-json-editor": "^2.5.7",
+        "gulp-jsonmin": "^1.2.0",
+        "gulp-less": "^5.0.0",
+        "gulp-replace": "^1.1.4",
+        "gulp-uglify": "^3.0.2",
+        "rollup": "4.62.3",
+        "tslib": "^2.8.1",
+        "typescript": "6.0.3",
+        "yazl": "^3.3.1"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "manifest": {
+        "app": {
+            "name": "HTML Zip"
+        }
+    },
+    "viewer": {
+        "title": "Просмотр HTML Zip",
+        "loading": "Открытие HTML-пакета...",
+        "missingPath": "Файл HTML Zip не указан.",
+        "openFailed": "Не удалось открыть этот пакет HTML Zip: {{message}}"
+    }
+}

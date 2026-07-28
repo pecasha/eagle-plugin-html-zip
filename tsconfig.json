@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "module": "esnext",
+        "target": "esnext",
+        "experimentalDecorators": true,
+        "strict": true,
+        "sourceMap": false,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "allowSyntheticDefaultImports": true,
+        "declaration": true,
+        "moduleResolution": "bundler",
+        "useDefineForClassFields": true,
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
+        "rootDir": "./src/core",
+        "outDir": "./build"
+    },
+    "include": [
+        "src/core/**/*.ts"
+    ]
+}
