@@ -1,11 +1,11 @@
 {
-    "name": "eagle-plugin-html-zip",
+    "name": "eagle-plugin-web-zip",
     "version": "1.0.0",
-    "description": "Preview the zip format consisting of static HTML items",
+    "description": "Preview static HTML archives and buildable npm project archives in Eagle",
     "author": "pecasha<chihai@pecasha.com>",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/pecasha/eagle-plugin-html-zip.git"
+        "url": "git+https://github.com/pecasha/eagle-plugin-web-zip.git"
     },
     "files": [
         "dist"

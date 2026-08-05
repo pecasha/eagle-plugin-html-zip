@@ -1,16 +1,17 @@
 const fs = require("fs");
 const { ipcRenderer } = require("electron");
 const { pathToFileURL } = require("url");
-const { prepareHtmlZip } = require("../core/index.ts");
+const { prepareWebZip } = require("../core/index.ts");
 
 const PAGE_LOAD_TIMEOUT_MS = 30_000;
 
 module.exports = async ({ src, dest, item }) => {
+    const preview = await prepareWebZip(src);
     const {
         indexPath,
         window: windowConfig,
         thumbnail: thumbnailConfig
-    } = await prepareHtmlZip(src);
+    } = preview;
     const frame = createPreviewFrame();
     const source = pathToFileURL(indexPath).href;
 
@@ -39,7 +40,7 @@ function createPreviewFrame() {
     document.body.style.cssText = "width:100%;height:100%;margin:0;overflow:hidden;background:#fff";
 
     const frame = document.createElement("iframe");
-    frame.setAttribute("title", "HTML Zip thumbnail");
+    frame.setAttribute("title", "Web Zip thumbnail");
     frame.style.cssText = "display:block;width:100%;height:100%;border:0;background:#fff";
     document.body.appendChild(frame);
     return frame;
@@ -193,6 +194,10 @@ async function capturePreview(frame, captureSize) {
         frame.style.top = "";
     }
 
+    return encodeCanvasJpeg(canvas);
+}
+
+async function encodeCanvasJpeg(canvas) {
     const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/jpeg", 1));
     if (!blob?.size) {
         throw new Error("Unable to encode the page capture");

@@ -8,6 +8,8 @@
     --status-color: #52565c;
     --spinner-track: #d8dade;
     --spinner-active: #3478f6;
+    --output-background: rgba(255, 255, 255, 0.72);
+    --output-border: rgba(82, 86, 92, 0.16);
 }
 
 :root[data-theme="gray"],
@@ -18,6 +20,8 @@
     --status-color: #d4d7dc;
     --spinner-track: #4b4e54;
     --spinner-active: #75a7ff;
+    --output-background: rgba(0, 0, 0, 0.22);
+    --output-border: rgba(255, 255, 255, 0.12);
 }
 
 html,
@@ -26,6 +30,7 @@ body,
 .preview-frame {
     width: 100%;
     height: 100%;
+    background-color: transparent;
 }
 
 html,
@@ -70,6 +75,49 @@ body {
 .status-message {
     max-width: 560px;
     margin: 0;
+    overflow-wrap: anywhere;
+    user-select: text;
+}
+
+.status-message:empty {
+    display: none;
+}
+
+.status.is-building .status-message {
+    display: block;
+}
+
+.npm-console {
+    width: min(760px, calc(100vw - 48px));
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid var(--output-border);
+    border-radius: 8px;
+    background: var(--output-background);
+    color: var(--status-color);
+    text-align: left;
+}
+
+.npm-console[hidden] {
+    display: none;
+}
+
+.npm-console-title {
+    margin: 0;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--output-border);
+    font: 600 12px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.npm-output {
+    max-height: min(40vh, 320px);
+    margin: 0;
+    padding: 10px 12px;
+    overflow: auto;
+    color: inherit;
+    font: 11px/1.45 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+    text-align: left;
+    white-space: pre-wrap;
     overflow-wrap: anywhere;
     user-select: text;
 }

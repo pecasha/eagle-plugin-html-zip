@@ -1,13 +1,18 @@
 {
     "manifest": {
         "app": {
-            "name": "HTML Zip"
+            "name": "Web Zip"
         }
     },
     "viewer": {
-        "title": "HTML-Zip-Vorschau",
-        "loading": "HTML-Paket wird geöffnet...",
-        "missingPath": "Es wurde keine HTML-Zip-Datei angegeben.",
-        "openFailed": "Dieses HTML-Zip-Paket kann nicht geöffnet werden: {{message}}"
+        "title": "Web-Zip-Vorschau",
+        "missingPath": "Es wurde keine Web-Zip-Datei angegeben.",
+        "npmBuildConfirm": "Dieses npmz-Paket muss Abhängigkeiten installieren und npm-Skripte ausführen. Diese Skripte können Befehle auf Ihrem Computer ausführen.\n\nFahren Sie nur fort, wenn Sie dem Paket vertrauen. Jetzt erstellen?",
+        "npmPreparing": "Das npm-Projekt wird vorbereitet...",
+        "npmInstalling": "Abhängigkeiten werden installiert...",
+        "npmRunningBuild": "Das npm-Projekt wird erstellt...",
+        "npmConsoleTitle": "Aktueller Befehl und Ausgabe",
+        "npmBuildCancelled": "Das npm-Projekt wurde nicht erstellt.",
+        "openFailed": "Dieses Web-Zip-Paket kann nicht geöffnet werden: {{message}}"
     }
 }

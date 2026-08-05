@@ -1,13 +1,18 @@
 {
     "manifest": {
         "app": {
-            "name": "HTML Zip"
+            "name": "Web Zip"
         }
     },
     "viewer": {
-        "title": "HTML Zip プレビュー",
-        "loading": "HTML パッケージを開いています...",
-        "missingPath": "HTML Zip ファイルが指定されていません。",
-        "openFailed": "この HTML Zip パッケージを開けません：{{message}}"
+        "title": "Web Zip プレビュー",
+        "missingPath": "Web Zip ファイルが指定されていません。",
+        "npmBuildConfirm": "この npmz パッケージは、依存関係のインストールと npm スクリプトの実行が必要です。これらのスクリプトはコンピューター上でコマンドを実行できます。\n\n信頼できるパッケージの場合のみ続行してください。今すぐビルドしますか？",
+        "npmPreparing": "npm プロジェクトを準備しています...",
+        "npmInstalling": "依存関係をインストールしています...",
+        "npmRunningBuild": "npm プロジェクトをビルドしています...",
+        "npmConsoleTitle": "現在実行中のコマンドと出力",
+        "npmBuildCancelled": "npm プロジェクトはビルドされませんでした。",
+        "openFailed": "この Web Zip パッケージを開けません：{{message}}"
     }
 }

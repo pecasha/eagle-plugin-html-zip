@@ -1,13 +1,18 @@
 {
     "manifest": {
         "app": {
-            "name": "HTML Zip"
+            "name": "Web Zip"
         }
     },
     "viewer": {
-        "title": "HTML Zip 预览",
-        "loading": "正在打开 HTML 包...",
-        "missingPath": "未提供 HTML Zip 文件。",
-        "openFailed": "无法打开此 HTML Zip 包：{{message}}"
+        "title": "Web Zip 预览",
+        "missingPath": "未提供 Web Zip 文件。",
+        "npmBuildConfirm": "此 npmz 包需要安装依赖并运行 npm 脚本后才能预览。这些脚本可以在你的电脑上执行命令。\n\n请仅在信任该文件时继续。现在构建吗？",
+        "npmPreparing": "正在准备 npm 项目...",
+        "npmInstalling": "正在安装依赖...",
+        "npmRunningBuild": "正在构建 npm 项目...",
+        "npmConsoleTitle": "当前正在运行命令及输出信息",
+        "npmBuildCancelled": "已取消构建 npm 项目。",
+        "openFailed": "无法打开此 Web Zip 包：{{message}}"
     }
 }

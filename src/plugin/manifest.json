@@ -8,7 +8,9 @@
     "devTools": true,
     "keywords": [
         "HTML",
-        "HTML Zip"
+        "HTML Zip",
+        "npm",
+        "Web Zip"
     ],
     "fallbackLanguage": "zh_CN",
     "languages": [
@@ -26,6 +28,11 @@
             "thumbnail": {
                 "path": "thumbnail.js"
             },
+            "viewer": {
+                "path": "viewer.html"
+            }
+        },
+        "npmz": {
             "viewer": {
                 "path": "viewer.html"
             }

@@ -1,13 +1,18 @@
 {
     "manifest": {
         "app": {
-            "name": "HTML Zip"
+            "name": "Web Zip"
         }
     },
     "viewer": {
-        "title": "HTML Zip Preview",
-        "loading": "Opening HTML package...",
-        "missingPath": "No HTML Zip file was provided.",
-        "openFailed": "Unable to open this HTML Zip package: {{message}}"
+        "title": "Web Zip Preview",
+        "missingPath": "No Web Zip file was provided.",
+        "npmBuildConfirm": "This npmz package needs to install dependencies and run npm scripts before it can be previewed. These scripts can execute commands on your computer.\n\nOnly continue if you trust the package. Build it now?",
+        "npmPreparing": "Preparing the npm project...",
+        "npmInstalling": "Installing dependencies...",
+        "npmRunningBuild": "Building the npm project...",
+        "npmConsoleTitle": "Current command and output",
+        "npmBuildCancelled": "The npm project was not built.",
+        "openFailed": "Unable to open this Web Zip package: {{message}}"
     }
 }

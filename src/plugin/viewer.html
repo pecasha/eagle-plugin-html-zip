@@ -13,10 +13,14 @@
 </head>
 <body>
     <main class="preview">
-        <iframe class="preview-frame" title="HTML Zip preview"></iframe>
+        <iframe class="preview-frame" title="Web Zip preview"></iframe>
         <div class="status" role="status" aria-live="polite">
             <span class="spinner" aria-hidden="true"></span>
             <p class="status-message"></p>
+            <section class="npm-console" aria-labelledby="npm-console-title" hidden>
+                <h2 class="npm-console-title" id="npm-console-title"></h2>
+                <pre class="npm-output" aria-live="off"></pre>
+            </section>
         </div>
     </main>
     <!-- inject:js -->
