@@ -10,6 +10,8 @@
     --spinner-active: #3478f6;
     --output-background: rgba(255, 255, 255, 0.72);
     --output-border: rgba(82, 86, 92, 0.16);
+    --consent-primary: #3478f6;
+    --consent-primary-hover: #2768db;
 }
 
 :root[data-theme="gray"],
@@ -22,6 +24,8 @@
     --spinner-active: #75a7ff;
     --output-background: rgba(0, 0, 0, 0.22);
     --output-border: rgba(255, 255, 255, 0.12);
+    --consent-primary: #75a7ff;
+    --consent-primary-hover: #8bb5ff;
 }
 
 html,
@@ -133,6 +137,87 @@ body {
 
 .status.is-error .spinner {
     display: none;
+}
+
+.npm-consent {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    color: var(--status-color);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.npm-consent[hidden] {
+    display: none;
+}
+
+.npm-consent-card {
+    width: min(520px, 100%);
+    text-align: center;
+}
+
+.npm-consent-title {
+    margin: 0 0 8px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.npm-consent-message {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+    white-space: pre-line;
+    user-select: text;
+}
+
+.npm-consent-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.npm-consent-actions button {
+    min-height: 32px;
+    padding: 6px 16px;
+    border: 1px solid var(--output-border);
+    border-radius: 4px;
+    background: var(--output-background);
+    color: var(--status-color);
+    font: 500 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    cursor: pointer;
+}
+
+.npm-consent-actions button:hover {
+    border-color: var(--consent-primary);
+}
+
+.npm-consent-actions button:focus-visible {
+    outline: 2px solid var(--consent-primary);
+    outline-offset: 2px;
+}
+
+.npm-consent-actions .npm-consent-approve {
+    border-color: var(--consent-primary);
+    background: var(--consent-primary);
+    color: #ffffff;
+}
+
+:root[data-theme="gray"] .npm-consent-actions .npm-consent-approve,
+:root[data-theme="dark"] .npm-consent-actions .npm-consent-approve,
+:root[data-theme="blue"] .npm-consent-actions .npm-consent-approve,
+:root[data-theme="purple"] .npm-consent-actions .npm-consent-approve {
+    color: #17243a;
+}
+
+.npm-consent-actions .npm-consent-approve:hover {
+    border-color: var(--consent-primary-hover);
+    background: var(--consent-primary-hover);
 }
 
 @keyframes spin {

@@ -8,11 +8,24 @@
         "title": "Просмотр Web Zip",
         "missingPath": "Файл Web Zip не указан.",
         "npmBuildConfirm": "Для просмотра этого пакета npmz необходимо установить зависимости и запустить сценарии npm. Эти сценарии могут выполнять команды на компьютере.\n\nПродолжайте, только если доверяете пакету. Собрать сейчас?",
+        "npmConsentTitle": "Разрешение на запуск локальных команд",
+        "npmConsentCancel": "Отмена",
+        "npmConsentApprove": "Разрешить и собрать",
         "npmPreparing": "Подготовка проекта npm...",
         "npmInstalling": "Установка зависимостей...",
         "npmRunningBuild": "Сборка проекта npm...",
         "npmConsoleTitle": "Текущая команда и вывод",
         "npmBuildCancelled": "Проект npm не был собран.",
         "openFailed": "Не удалось открыть этот пакет Web Zip: {{message}}"
+    },
+    "inspector": {
+        "title": "Миниатюра Web Zip",
+        "generateThumbnail": "Создать миниатюру",
+        "checkingViewer": "Проверка окна просмотра формата...",
+        "generating": "Создание...",
+        "success": "Миниатюра обновлена",
+        "failed": "Не удалось создать миниатюру: {{message}}",
+        "viewerUnavailable": "Окно просмотра формата не открыто или не отвечает",
+        "missingId": "Отсутствует ID элемента"
     }
 }

@@ -8,11 +8,24 @@
         "title": "Vista previa de Web Zip",
         "missingPath": "No se proporcionó ningún archivo Web Zip.",
         "npmBuildConfirm": "Este paquete npmz debe instalar dependencias y ejecutar scripts de npm. Estos scripts pueden ejecutar comandos en el equipo.\n\nContinúe solo si confía en el paquete. ¿Compilarlo ahora?",
+        "npmConsentTitle": "Permiso para ejecutar comandos locales",
+        "npmConsentCancel": "Cancelar",
+        "npmConsentApprove": "Permitir y compilar",
         "npmPreparing": "Preparando el proyecto npm...",
         "npmInstalling": "Instalando dependencias...",
         "npmRunningBuild": "Compilando el proyecto npm...",
         "npmConsoleTitle": "Comando actual y salida",
         "npmBuildCancelled": "El proyecto npm no se compiló.",
         "openFailed": "No se puede abrir este paquete Web Zip: {{message}}"
+    },
+    "inspector": {
+        "title": "Miniatura de Web Zip",
+        "generateThumbnail": "Generar miniatura",
+        "checkingViewer": "Comprobando la vista previa...",
+        "generating": "Generando...",
+        "success": "Miniatura actualizada",
+        "failed": "No se pudo generar la miniatura: {{message}}",
+        "viewerUnavailable": "La vista previa no está abierta o no responde",
+        "missingId": "Falta el ID del elemento"
     }
 }

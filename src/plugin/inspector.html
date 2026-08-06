@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title></title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            color-scheme: light dark;
+            --text-color: #52565c;
+            --button-background: rgba(255, 255, 255, 0.72);
+            --button-border: rgba(82, 86, 92, 0.2);
+            --button-hover: #3478f6;
+            --success-color: #238636;
+        }
+
+        :root[data-theme="gray"],
+        :root[data-theme="dark"],
+        :root[data-theme="blue"],
+        :root[data-theme="purple"] {
+            --text-color: #d4d7dc;
+            --button-background: rgba(0, 0, 0, 0.16);
+            --button-border: rgba(255, 255, 255, 0.14);
+            --button-hover: #75a7ff;
+            --success-color: #56c271;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            padding: 0;
+            color: var(--text-color);
+            font: 12px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        .inspector-content {
+            width: 100%;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 160ms ease-out;
+        }
+
+        .inspector-content.is-ready {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .thumbnail-control {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: 6px;
+            min-width: 0;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .inspector-content {
+                transition: none;
+            }
+        }
+
+        .generate-thumbnail {
+            flex: none;
+            min-height: 26px;
+            padding: 2px 8px;
+            border: 1px solid var(--button-border);
+            border-radius: 4px;
+            background: var(--button-background);
+            color: inherit;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .generate-thumbnail:hover:not(:disabled),
+        .generate-thumbnail:focus-visible {
+            border-color: var(--button-hover);
+        }
+
+        .generate-thumbnail:focus-visible {
+            outline: 2px solid var(--button-hover);
+            outline-offset: 2px;
+        }
+
+        .generate-thumbnail:disabled {
+            cursor: default;
+            opacity: 0.55;
+        }
+
+        .thumbnail-status {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 11px;
+            line-height: 1.3;
+        }
+
+        .thumbnail-status[data-state="success"] {
+            color: var(--success-color);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="inspector-content" aria-hidden="true">
+        <div class="thumbnail-control">
+            <button class="generate-thumbnail" type="button"></button>
+            <span class="thumbnail-status" role="status" aria-live="polite"></span>
+        </div>
+    </div>
+    <script>
+        const VIEWER_HEARTBEAT_TIMEOUT_MS = 3_000;
+        const THUMBNAIL_TIMEOUT_MS = 30_000;
+        const BROADCAST_CHANNEL_PREFIX = "webzip-";
+        const VIEWER_PING_MESSAGE = "viewer-ping";
+        const VIEWER_PONG_MESSAGE = "viewer-pong";
+        const GENERATE_THUMBNAIL_MESSAGE = "generate-thumbnail";
+        const THUMBNAIL_RESULT_MESSAGE = "generate-thumbnail-result";
+
+        (async function initializeInspector() {
+            const translate = await waitForTranslator();
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get("id");
+            const theme = params.get("theme") || "light";
+            const lang = params.get("lang") || "en";
+            const button = document.querySelector(".generate-thumbnail");
+            const status = document.querySelector(".thumbnail-status");
+            const content = document.querySelector(".inspector-content");
+            let activeRequest = null;
+            let requestPhase = null;
+            let requestTimeout = null;
+
+            document.documentElement.dataset.theme = theme;
+            document.documentElement.lang = lang;
+            document.title = translate("inspector.title");
+            button.textContent = translate("inspector.generateThumbnail");
+            requestAnimationFrame(() => {
+                content.classList.add("is-ready");
+                content.removeAttribute("aria-hidden");
+            });
+
+            if (!id) {
+                button.disabled = true;
+                showError(translate("inspector.missingId"));
+                return;
+            }
+
+            const channel = new BroadcastChannel(`${BROADCAST_CHANNEL_PREFIX}${id}`);
+            channel.addEventListener("message", event => {
+                const result = event.data;
+                if (result?.requestId !== activeRequest) {
+                    return;
+                }
+                if (result.type === VIEWER_PONG_MESSAGE && requestPhase === "heartbeat") {
+                    beginThumbnailGeneration();
+                    return;
+                }
+                if (result.type === THUMBNAIL_RESULT_MESSAGE && requestPhase === "thumbnail") {
+                    finishRequest(result.ok, result.message);
+                }
+            });
+            window.addEventListener("beforeunload", () => channel.close(), { once: true });
+
+            button.addEventListener("click", () => {
+                if (activeRequest) {
+                    return;
+                }
+                activeRequest = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+                requestPhase = "heartbeat";
+                button.disabled = true;
+                showStatus("pending", translate("inspector.checkingViewer"));
+                requestTimeout = setTimeout(() => {
+                    finishRequest(false, translate("inspector.viewerUnavailable"), true);
+                }, VIEWER_HEARTBEAT_TIMEOUT_MS);
+                channel.postMessage({
+                    type: VIEWER_PING_MESSAGE,
+                    requestId: activeRequest
+                });
+            });
+
+            function beginThumbnailGeneration() {
+                clearTimeout(requestTimeout);
+                requestPhase = "thumbnail";
+                showStatus("pending", translate("inspector.generating"));
+                requestTimeout = setTimeout(() => {
+                    finishRequest(false, translate("inspector.viewerUnavailable"), true);
+                }, THUMBNAIL_TIMEOUT_MS);
+                channel.postMessage({
+                    type: GENERATE_THUMBNAIL_MESSAGE,
+                    requestId: activeRequest
+                });
+            }
+
+            function finishRequest(ok, message, translated = false) {
+                clearTimeout(requestTimeout);
+                requestTimeout = null;
+                activeRequest = null;
+                requestPhase = null;
+                button.disabled = false;
+                if (ok) {
+                    showStatus("success", translate("inspector.success"));
+                    return;
+                }
+                showStatus("", "");
+                showError(translated ? message : translate("inspector.failed", { message }));
+            }
+
+            function showStatus(state, message) {
+                status.dataset.state = state;
+                status.textContent = message;
+                status.title = message;
+            }
+
+            function showError(message) {
+                eagle.dialog.showErrorBox(translate("inspector.title"), message);
+            }
+        })();
+
+        function waitForTranslator() {
+            return new Promise(resolve => {
+                const detect = () => {
+                    try {
+                        const instance = window.i18next;
+                        const appName = instance?.t?.("manifest.app.name");
+                        if (typeof appName === "string" && appName.trim() && appName !== "manifest.app.name") {
+                            resolve(instance.t.bind(instance));
+                            return;
+                        }
+                    } catch {}
+                    setTimeout(detect, 50);
+                };
+                detect();
+            });
+        }
+    </script>
+</body>
+</html>

@@ -8,11 +8,24 @@
         "title": "Web Zip 預覽",
         "missingPath": "未提供 Web Zip 檔案。",
         "npmBuildConfirm": "此 npmz 封裝檔需要安裝相依套件並執行 npm 指令碼後才能預覽。這些指令碼可以在你的電腦上執行命令。\n\n請僅在信任該檔案時繼續。現在建置嗎？",
+        "npmConsentTitle": "需要授權執行本機命令",
+        "npmConsentCancel": "取消",
+        "npmConsentApprove": "允許並建置",
         "npmPreparing": "正在準備 npm 專案...",
         "npmInstalling": "正在安裝相依套件...",
         "npmRunningBuild": "正在建置 npm 專案...",
         "npmConsoleTitle": "目前正在執行的命令及輸出資訊",
         "npmBuildCancelled": "已取消建置 npm 專案。",
         "openFailed": "無法開啟此 Web Zip 封裝檔：{{message}}"
+    },
+    "inspector": {
+        "title": "Web Zip 縮圖",
+        "generateThumbnail": "產生縮圖",
+        "checkingViewer": "正在檢查預覽頁面...",
+        "generating": "正在產生...",
+        "success": "縮圖已更新",
+        "failed": "產生縮圖失敗：{{message}}",
+        "viewerUnavailable": "無法產生縮圖，請先開啟格式預覽頁面",
+        "missingId": "缺少項目 ID"
     }
 }

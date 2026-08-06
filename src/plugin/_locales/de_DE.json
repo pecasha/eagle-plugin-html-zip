@@ -8,11 +8,24 @@
         "title": "Web-Zip-Vorschau",
         "missingPath": "Es wurde keine Web-Zip-Datei angegeben.",
         "npmBuildConfirm": "Dieses npmz-Paket muss Abhängigkeiten installieren und npm-Skripte ausführen. Diese Skripte können Befehle auf Ihrem Computer ausführen.\n\nFahren Sie nur fort, wenn Sie dem Paket vertrauen. Jetzt erstellen?",
+        "npmConsentTitle": "Lokale Befehle ausführen?",
+        "npmConsentCancel": "Abbrechen",
+        "npmConsentApprove": "Zulassen und erstellen",
         "npmPreparing": "Das npm-Projekt wird vorbereitet...",
         "npmInstalling": "Abhängigkeiten werden installiert...",
         "npmRunningBuild": "Das npm-Projekt wird erstellt...",
         "npmConsoleTitle": "Aktueller Befehl und Ausgabe",
         "npmBuildCancelled": "Das npm-Projekt wurde nicht erstellt.",
         "openFailed": "Dieses Web-Zip-Paket kann nicht geöffnet werden: {{message}}"
+    },
+    "inspector": {
+        "title": "Web-Zip-Vorschaubild",
+        "generateThumbnail": "Vorschaubild erstellen",
+        "checkingViewer": "Formatvorschau wird geprüft...",
+        "generating": "Vorschaubild wird erstellt...",
+        "success": "Vorschaubild aktualisiert",
+        "failed": "Vorschaubild konnte nicht erstellt werden: {{message}}",
+        "viewerUnavailable": "Die Formatvorschau ist nicht geöffnet oder antwortet nicht",
+        "missingId": "Die Element-ID fehlt"
     }
 }

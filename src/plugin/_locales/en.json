@@ -8,11 +8,24 @@
         "title": "Web Zip Preview",
         "missingPath": "No Web Zip file was provided.",
         "npmBuildConfirm": "This npmz package needs to install dependencies and run npm scripts before it can be previewed. These scripts can execute commands on your computer.\n\nOnly continue if you trust the package. Build it now?",
+        "npmConsentTitle": "Permission to run local commands",
+        "npmConsentCancel": "Cancel",
+        "npmConsentApprove": "Allow and build",
         "npmPreparing": "Preparing the npm project...",
         "npmInstalling": "Installing dependencies...",
         "npmRunningBuild": "Building the npm project...",
         "npmConsoleTitle": "Current command and output",
         "npmBuildCancelled": "The npm project was not built.",
         "openFailed": "Unable to open this Web Zip package: {{message}}"
+    },
+    "inspector": {
+        "title": "Web Zip Thumbnail",
+        "generateThumbnail": "Generate thumbnail",
+        "checkingViewer": "Checking the format preview...",
+        "generating": "Generating...",
+        "success": "Thumbnail updated",
+        "failed": "Unable to generate thumbnail: {{message}}",
+        "viewerUnavailable": "Open the format preview before generating a thumbnail",
+        "missingId": "The item ID is missing"
     }
 }

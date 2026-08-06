@@ -8,11 +8,24 @@
         "title": "Web Zip 预览",
         "missingPath": "未提供 Web Zip 文件。",
         "npmBuildConfirm": "此 npmz 包需要安装依赖并运行 npm 脚本后才能预览。这些脚本可以在你的电脑上执行命令。\n\n请仅在信任该文件时继续。现在构建吗？",
+        "npmConsentTitle": "需要授权运行本机命令",
+        "npmConsentCancel": "取消",
+        "npmConsentApprove": "允许并构建",
         "npmPreparing": "正在准备 npm 项目...",
         "npmInstalling": "正在安装依赖...",
         "npmRunningBuild": "正在构建 npm 项目...",
         "npmConsoleTitle": "当前正在运行命令及输出信息",
         "npmBuildCancelled": "已取消构建 npm 项目。",
         "openFailed": "无法打开此 Web Zip 包：{{message}}"
+    },
+    "inspector": {
+        "title": "Web Zip 缩略图",
+        "generateThumbnail": "生成缩略图",
+        "checkingViewer": "正在检查预览页面...",
+        "generating": "正在生成...",
+        "success": "缩略图已更新",
+        "failed": "生成缩略图失败：{{message}}",
+        "viewerUnavailable": "无法生成缩略图，请先打开格式预览页面",
+        "missingId": "缺少项目 ID"
     }
 }

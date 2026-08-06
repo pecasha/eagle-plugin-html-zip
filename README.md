@@ -35,7 +35,7 @@ Built output is served by an ephemeral HTTP server bound only to `127.0.0.1`. Th
 > [!WARNING]
 > Installing dependencies and running npm scripts can execute arbitrary commands with the current user's permissions. Only build `.npmz` files from sources you trust.
 
-The `.npmz` format does not register a thumbnail handler, so Eagle skips thumbnail generation entirely. Dependency installation and project builds only begin after the user opens the viewer and approves the security prompt.
+The `.npmz` format does not register an automatic thumbnail handler. While its format preview is open, use the inspector's **Generate thumbnail** button to capture the current preview and save it as the item's custom thumbnail. The inspector checks that the matching viewer is open before starting the capture and reports when the preview is unavailable. Dependency installation and project builds only begin after the user opens the viewer and approves the security prompt.
 
 ## Preview configuration
 

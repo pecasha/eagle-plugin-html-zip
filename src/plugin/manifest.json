@@ -30,11 +30,21 @@
             },
             "viewer": {
                 "path": "viewer.html"
+            },
+            "inspector": {
+                "path": "inspector.html",
+                "height": 40,
+                "multiSelect": false
             }
         },
         "npmz": {
             "viewer": {
                 "path": "viewer.html"
+            },
+            "inspector": {
+                "path": "inspector.html",
+                "height": 40,
+                "multiSelect": false
             }
         }
     }

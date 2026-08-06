@@ -8,11 +8,24 @@
         "title": "Web Zip 미리보기",
         "missingPath": "Web Zip 파일이 제공되지 않았습니다.",
         "npmBuildConfirm": "이 npmz 패키지는 종속성을 설치하고 npm 스크립트를 실행해야 합니다. 이러한 스크립트는 컴퓨터에서 명령을 실행할 수 있습니다.\n\n패키지를 신뢰하는 경우에만 계속하세요. 지금 빌드하시겠습니까?",
+        "npmConsentTitle": "로컬 명령 실행 권한",
+        "npmConsentCancel": "취소",
+        "npmConsentApprove": "허용 및 빌드",
         "npmPreparing": "npm 프로젝트를 준비하는 중...",
         "npmInstalling": "종속성을 설치하는 중...",
         "npmRunningBuild": "npm 프로젝트를 빌드하는 중...",
         "npmConsoleTitle": "현재 실행 중인 명령 및 출력",
         "npmBuildCancelled": "npm 프로젝트를 빌드하지 않았습니다.",
         "openFailed": "이 Web Zip 패키지를 열 수 없습니다: {{message}}"
+    },
+    "inspector": {
+        "title": "Web Zip 썸네일",
+        "generateThumbnail": "썸네일 생성",
+        "checkingViewer": "형식 미리보기를 확인하는 중...",
+        "generating": "생성 중...",
+        "success": "썸네일이 업데이트되었습니다",
+        "failed": "썸네일을 생성할 수 없습니다: {{message}}",
+        "viewerUnavailable": "형식 미리보기가 열려 있지 않거나 응답하지 않습니다",
+        "missingId": "항목 ID가 없습니다"
     }
 }
